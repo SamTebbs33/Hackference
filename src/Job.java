@@ -39,8 +39,8 @@ public class Job {
 
     public static void findJobs(String jobTitle, String place) throws ResponseException, NotFound {
 	String query = "https://api.import.io/store/data/d321f0fc-9c00-458d-9f40-d8012f677cf1/_query?input/webpage/url=http%3A%2F%2Fwww.indeed.co.uk%2F" + jobTitle + "-jobs-in-" + place + "&_user=1698e35a-1ac8-4ef5-b5f5-50d0cebf2239&_apikey=1698e35a1ac84ef5b5f550d0cebf2239468da45929256c2eacd52fe0a3547befa4d4459b72516921575396f8c7c4773c68f09c2aadf3a436a3364be53f66f2e0650dfb16595765bea882bfcc5587bfec";
-	Test.agent.sendGET(query);
-	JNode results = Test.agent.json.get("results");
+	Util.agent.sendGET(query);
+	JNode results = Util.agent.json.get("results");
 	for(JNode result : results){
 	    JNode title = result.get("turnstilelink_link_1\\/_title");
 	    JNode company = result.get("company_value");

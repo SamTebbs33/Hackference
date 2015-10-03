@@ -7,7 +7,6 @@ import java.io.FileReader;
  * Created by admin on 03/10/2015.
  */
 public class JobListPanel extends JPanel {
-    List
 
     public JobListPanel(Dimension screenSize) {
         this.setSize(screenSize);

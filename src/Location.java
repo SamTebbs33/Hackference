@@ -17,8 +17,8 @@ public class Location {
     }
     
     private JobCoord getCoords() throws ResponseException, NotFound{
-	Test.agent.sendGET("https://maps.googleapis.com/maps/api/geocode/json?address="+location);
-	JNode json = Test.agent.json;
+	Util.agent.sendGET("https://maps.googleapis.com/maps/api/geocode/json?address="+location);
+	JNode json = Util.agent.json;
 	JNode coords = null;
 	try {
 	    coords = json.get("results").get(0).get("geometry").get("location");
