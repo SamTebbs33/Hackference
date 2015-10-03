@@ -1,5 +1,16 @@
 <html>
-	<title>Hackference job map</title>
+	<head>
+		<title>Hackference job map</title>
+		<!-- Import all remote and local javascript files. main.js is the entry-point -->
+		<!-- Esri things -->
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+		<script src="http://js.arcgis.com/3.14/"/>
+
+		<script src="src/secret.js"/>
+		<script src="src/job_search.js"/>
+		<script src="src/mapping.js"/>
+		<script src="src/main.js"/>
+	</head>
 	<body>
 		<h1>Hackference job map</h1>
 		<br/><br/>
@@ -17,14 +28,4 @@
 
 		<!-- The map will be rendered inside this div -->
 		<div id="map"></div>
-
-		<!-- Import all remote and local javascript files. main.js is the entry-point -->
-		<!-- Esri things -->
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
-		<script src="http://js.arcgis.com/3.14/"/>
-
-		<script src="src/secret.js"/>
-		<script src="src/job_search.js"/>
-		<script src="src/mapping.js"/>
-		<script src="src/main.js"/>
 </html>
