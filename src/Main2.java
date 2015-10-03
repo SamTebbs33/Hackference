@@ -1,5 +1,3 @@
-package com.company;
-
 import com.sun.xml.internal.bind.Util;
 
 import javax.swing.*;
