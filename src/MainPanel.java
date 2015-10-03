@@ -8,8 +8,18 @@ import java.net.URL;
  * Created by admin on 03/10/2015.
  */
 public class MainPanel extends JPanel {
+    private String mapsApiKey = "";
+
     public MainPanel(Dimension screenSize){
         this.setSize(screenSize);
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("apikeys.txt"));
+            String read = br.readLine();
+            mapsApiKey = read.substring(read.indexOf(":") + 1);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -18,19 +28,18 @@ public class MainPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g2.drawImage(getMapImage("MADRID"), 0, 0, this);
+        g2.drawImage(getMapImage("Madrid"), 0, 0, this);
     }
-
 
     public Image getMapImage(String location){
         Image mapImage;
 
+        System.out.println(this.getWidth() + ", " + this.getHeight());
+
         try {
 
-            String url2 = "http://maps.googleapis.com/maps/api/staticmap?center=" + location + "&size=" + this.getWidth() + "x" + this.getHeight() + "&style=element:labels|visibility:on&style=element:geometry.stroke|visibility:off&style=feature:road";
-            String imageUrl = url2;
+            String imageUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + location + "&size=" + this.getWidth() + "x" + this.getHeight() + "&style=element:labels|visibility:on&style=element:geometry.stroke|visibility:off&style=feature:road&key=" + mapsApiKey;
             String destinationFile = "tempmap.jpg";
-            String str = destinationFile;
             URL url = new URL(imageUrl);
             InputStream is = url.openStream();
             OutputStream os = new FileOutputStream(destinationFile);
@@ -51,8 +60,6 @@ public class MainPanel extends JPanel {
         }
 
         return null;
-
-
     }
 
 }

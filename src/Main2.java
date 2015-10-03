@@ -1,5 +1,3 @@
-import com.sun.xml.internal.bind.Util;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,19 +10,19 @@ public class Main2 {
         JFrame frame = new JFrame();
 
         frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        frame.setExtendedState(1);
+
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
-        MainPanel mainPanel = new MainPanel(frame.getSize());
-        frame.add(mainPanel);
+        SearchPanel loginPanel = new SearchPanel(frame.getSize());
+        //MainPanel mainPanel = new MainPanel(frame.getSize());
+        frame.add(loginPanel);
+        frame.repaint();
 
-        frame.requestFocus();
+        //frame.add(mainPanel);
 
         System.out.println(frame.getSize());
 
-        while(true){
-
-        }
     }
 }
