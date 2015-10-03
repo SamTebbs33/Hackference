@@ -1,4 +1,3 @@
 function run(){
-    moveMapTo(51.5033630, -0.1276250);
-    console.log("tried to move");
+    moveMapTo(-0.1276250, 51.5033630);
 }

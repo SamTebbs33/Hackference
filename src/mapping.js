@@ -8,7 +8,7 @@ var setBaseMap;
 require(["esri/map", "esri/geometry/Point","dojo/domReady!"], function(Map, Point) {
   map = new Map("map", {
     center: [-56.049, 38.485],
-    zoom: 3,
+    zoom: 6,
     basemap: "streets"
   });
 
