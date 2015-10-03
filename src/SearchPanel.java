@@ -20,6 +20,9 @@ public class SearchPanel extends JPanel {
     public SearchPanel(Dimension dimension){
         this.setSize(dimension);
 
+        FlowLayout layout = new FlowLayout();
+
+
         jobField = new JTextField();
         locationField = new JTextField();
 
@@ -29,11 +32,22 @@ public class SearchPanel extends JPanel {
         jobField.setSize(textFieldSize);
         locationField.setSize(textFieldSize);
 
-        jobField.setLocation(this.getWidth()/2 - (int)textFieldSize.getWidth()/2, 400);
-        locationField.setLocation(this.getWidth()/2 - (int)textFieldSize.getWidth(), 500);
+        layout.addLayoutComponent("jobLabel", jobLabel);
+        layout.addLayoutComponent("jobField", jobField);
+        layout.addLayoutComponent("locationLabel", locationLabel);
+        layout.addLayoutComponent("locationField", locationField);
 
+        this.add(jobLabel);
         this.add(jobField);
+        this.add(locationLabel);
         this.add(locationField);
+
+
+        this.setLayout(layout);
+
+
+
+
 
         try {
             backgroundImage = ImageIO.read(new File("res/login_background.png"));

@@ -16,11 +16,11 @@ public class Main2 {
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
         SearchPanel loginPanel = new SearchPanel(frame.getSize());
-        //MainPanel mainPanel = new MainPanel(frame.getSize());
-        frame.add(loginPanel);
+        MainPanel mainPanel = new MainPanel(frame.getSize());
+        //frame.add(loginPanel);
         frame.repaint();
 
-        //frame.add(mainPanel);
+        frame.add(mainPanel);
 
         System.out.println(frame.getSize());
 
