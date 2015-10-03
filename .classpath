@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/samtebbs/Documents/GitRepos/Hackference/lib/jtaunt/jaunt1.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/samtebbs/Documents/GitRepos/Hackference/lib/jtaunt/javadocs/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
