@@ -14,11 +14,10 @@ public class JobCoord {
     @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("JobCoord [x=");
+	builder.append("x=");
 	builder.append(x);
 	builder.append(", y=");
 	builder.append(y);
-	builder.append("]");
 	return builder.toString();
     }
    
