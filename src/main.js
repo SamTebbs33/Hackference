@@ -1,7 +1,7 @@
 function search(){
     console.log("# search()")
     var job_area = document.getElementById("job_area");
-    
+
     var job_types = document.getElementById("job_type");
     var job_type = job_types.options[job_types.selectedIndex].value;
 
@@ -12,4 +12,5 @@ function search(){
     console.log("job type: " + job_type);
     console.log("map type: " + map_type);
     setBaseMap(map_type);
+    return false;
 }
