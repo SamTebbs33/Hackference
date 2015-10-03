@@ -11,7 +11,7 @@ require(["esri/map", "esri/geometry/Point","dojo/domReady!"], function(Map, Poin
     zoom: 3,
     basemap: "streets"
   });
-  run();
+
 
     moveMapTo = function(x, y){
         map.centerAt(new Point(x, y));
@@ -21,5 +21,5 @@ require(["esri/map", "esri/geometry/Point","dojo/domReady!"], function(Map, Poin
          map.setBaseMap(basemap);
     }
 
-
+    run();
 });
