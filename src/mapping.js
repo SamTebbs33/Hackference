@@ -1,6 +1,6 @@
 // source: https://developers.arcgis.com/javascript/jsapi/map-amd.html
 var map;
-require(["esri/geometry/Point"]);
+require("esri/geometry/Point");
 require(["esri/map", "dojo/domReady!"], function(Map) {
   map = new Map("map", {
     center: [-56.049, 38.485],
