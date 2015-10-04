@@ -19,6 +19,32 @@
         <p>Finding jobs near you</p>
 
         <p class="view"><a href="https://github.com/SamTebbs33/Hackference">View the Project on GitHub <br><br><small>SamTebbs33/Hackference</small></a></p>
+
+        <br>
+
+        <form name="job_search">
+           Job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="text" name="job_field">
+           <br>Location&nbsp;&nbsp;&nbsp;
+           <input type="text" name="job_location" onkeypress="return searchKeyPress(event);">
+           <br>Map type&nbsp;&nbsp;
+           <select name="map_type" onChange="return changeBaseMap()">
+               <option value="streets">Streets</option>
+               <option value="satellite">Satellite</option>
+               <option value="hybrid">Hybrid</option>
+               <option value="terrain">Terrain</option>
+           </select>
+           <br>
+           <input id="button_search" type="button" onclick="return search()" value="Search">
+           <br><br>Sort by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <select name="sort_type" onChange="return sort()">
+               <option value="company">Company</option>
+               <option value="title">Job title</option>
+               <option value="location">Location</option>
+           </select>
+           <br>
+           <br><br>
+       </form>
       </header>
 
       <section>
@@ -41,32 +67,9 @@
         <br><br>
         <ul id="job_list">
         </ul>
+        <br><input id="scroll_button" type="button" onclick="return scrollToTop()" value="Beam me up Scotty!"></input>
 
     </section>
-    <br><br><br><br><br><br><br><br><br>
-    <form name="job_search">
-       Job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="text" name="job_field">
-       <br>Location&nbsp;&nbsp;&nbsp;
-       <input type="text" name="job_location" onkeypress="return searchKeyPress(event);">
-       <br>Map type&nbsp;&nbsp;
-       <select name="map_type" onChange="return changeBaseMap()">
-           <option value="streets">Streets</option>
-           <option value="satellite">Satellite</option>
-           <option value="hybrid">Hybrid</option>
-           <option value="terrain">Terrain</option>
-       </select>
-       <br>
-       <input id="button_search" type="button" onclick="return search()" value="Search">
-       <br><br>Sort by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <select name="sort_type" onChange="return sort()">
-           <option value="title">Job title</option>
-           <option value="location">Location</option>
-           <option value="sompany">Company</option>
-       </select>
-       <br>
-       <br><br>
-   </form>
 
       <footer>
         <p><small>Hosted on GitHub Pages &mdash;</small></p>
