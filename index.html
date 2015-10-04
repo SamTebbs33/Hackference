@@ -22,37 +22,51 @@
       </header>
 
       <section>
-         <form name="job_search">
-            Job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="job_field">
-            <br>Location&nbsp;&nbsp;&nbsp;
-			<input type="text" name="job_location">
-            <br>Map type&nbsp;&nbsp;
-			<select name="map_type" onChange="return changeBaseMap()">
-				<option value="streets">Streets</option>
-				<option value="satellite">Satellite</option>
-				<option value="hybrid">Hybrid</option>
-				<option value="terrain">Terrain</option>
-			</select>
-			<br>
-			<input type="button" onclick="return search()" value="Search">
-            <br><br>Sort by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<select name="sort_type" onChange="return sort()">
-				<option value="title">Job title</option>
-				<option value="location">Location</option>
-				<option value="sompany">Company</option>
-			</select>
-            <br>
-            <br><br>
-        </form>
+          <script>
+            function searchKeyPress(e){
+                // look for window.event in case event isn't passed in
+                console.log("pressed");
+                e = e || window.event;
+                if (e.keyCode == 13){
+                    console.log("pressed2");
+                    document.getElementById('button_search').click();
+                    return false;
+                }
+                return true;
+            }
+            </script>
 
         <!-- The map will be rendered inside this div -->
-        <div id="map"></div>
+        <div id="map" style="width:650px;"></div>
         <br><br>
         <ul id="job_list">
         </ul>
 
     </section>
+    <br><br><br><br><br><br><br><br><br>
+    <form name="job_search">
+       Job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="text" name="job_field">
+       <br>Location&nbsp;&nbsp;&nbsp;
+       <input type="text" name="job_location" onkeypress="return searchKeyPress(event);">
+       <br>Map type&nbsp;&nbsp;
+       <select name="map_type" onChange="return changeBaseMap()">
+           <option value="streets">Streets</option>
+           <option value="satellite">Satellite</option>
+           <option value="hybrid">Hybrid</option>
+           <option value="terrain">Terrain</option>
+       </select>
+       <br>
+       <input id="button_search" type="button" onclick="return search()" value="Search">
+       <br><br>Sort by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <select name="sort_type" onChange="return sort()">
+           <option value="title">Job title</option>
+           <option value="location">Location</option>
+           <option value="sompany">Company</option>
+       </select>
+       <br>
+       <br><br>
+   </form>
 
       <footer>
         <p><small>Hosted on GitHub Pages &mdash;</small></p>
@@ -63,6 +77,8 @@
 	<script src="http://js.arcgis.com/3.14/"></script>
     <script src="javascripts/scale.fix.js"></script>
     <script src="src/secret.js"/></script>
+    <script src="src/datajs-1.1.2.min.js"/></script>
+    <!-- <script src='http://vws.responsivevoice.com/v/e?key=mnXabkJl'></script> -->
     <script src="src/main.js"/></script>
   </body>
 </html>

@@ -3,14 +3,18 @@ var map;
 var jobs = [];
 var moveMapTo;
 var setBaseMap;
+var makeMarker;
+var graphicsLayer;
 
-//var Point = require('esri/geometry/point');
-require(["esri/map", "esri/geometry/Point", /*"esri/symbols/SimpleMarkerSymbol", "esri/Graphic",*/ "dojo/domReady!"], function(Map, Point/*, SimpleMarkerSymbol, Graphic*/) {
+require(["esri/map", "esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", "esri/graphic", "esri/symbols/SimpleLineSymbol", "esri/Color", "esri/layers/GraphicsLayer", "esri/InfoTemplate", "dojo/domReady!"],
+ function(Map, Point, PictureMarkerSymbol, Graphic, SimpleLineSymbol, Color, GraphicsLayer, InfoTemplate) {
   map = new Map("map", {
     center: [-1.888082, 52.4770682],
     zoom: 3,
     basemap: "streets"
   });
+  graphicsLayer = new GraphicsLayer();
+  map.addLayer(graphicsLayer);
 
     moveMapTo = function(x, y){
         map.centerAt(new Point(x, y));
@@ -18,6 +22,15 @@ require(["esri/map", "esri/geometry/Point", /*"esri/symbols/SimpleMarkerSymbol",
 
     setBaseMap = function(basemap){
          map.setBasemap(basemap);
+    }
+
+    makeMarker = function(long, lat, title, content){
+        var point = new Point(long, lat);
+        var marker = new PictureMarkerSymbol("icon.png", 25, 25);
+        var infoTemplate = new InfoTemplate(title, content)
+        //var marker = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 16, SimpleLineSymbol.STYLE_DASH, new Color([255,0,0]));
+        //marker.setOffset(point.x, point.y);
+        graphicsLayer.add(new Graphic(point, marker, {}, infoTemplate));
     }
 
 });
@@ -54,6 +67,7 @@ function sort(){
 
 function printJobs(){
     var list = document.getElementById("job_list");
+    graphicsLayer.clear();
     list.innerHTML = "";
     for(var x = 0; x < jobs.length; x++){
         var job = jobs[x];
@@ -61,7 +75,14 @@ function printJobs(){
         list.innerHTML += "\t<li><b>Company:</b> " + job.company + "</li>";
         list.innerHTML += "\t<li><b>Location:</b> " + job.location + "</li>";
         if(job.wage !== undefined) list.innerHTML += "\t<li><b>Wage:</b> " + job.wage + "</li></p>";
-        else list.innerHTML += "</p>"
+        else list.innerHTML += "</p>";
+
+        query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + job.location;
+        $.getJSON(query, function(){})
+        .done(function(data){
+            var loc = data.results[0].geometry.location;
+            makeMarker(loc.lng, loc.lat, job.title, job.company);
+        });
     }
 }
 
@@ -100,7 +121,7 @@ function search(){
     .done(function(data){
         var loc = data.results[0].geometry.location;
         moveMapTo(loc.lng, loc.lat);
-    })
+    });
 
     return false;
 }
