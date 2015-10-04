@@ -15,7 +15,6 @@ require(["esri/map", "esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", 
   });
   graphicsLayer = new GraphicsLayer();
   map.addLayer(graphicsLayer);
-  disableScrollButton();
 
     moveMapTo = function(x, y){
         map.centerAt(new Point(x, y));
@@ -35,14 +34,6 @@ require(["esri/map", "esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", 
     }
 
 });
-
-function disableScrollButton(){
-    document.getElementById("scroll_button").style.display = 'none';
-}
-
-function enableScrollButton(){
-    document.getElementById("scroll_button").style.display = '';
-}
 
 function sort(){
     var form = document.job_search
@@ -90,7 +81,7 @@ function printJobs(){
         $.getJSON(query, function(){})
         .done(function(data){
             var loc = data.results[0].geometry.location;
-            makeMarker(loc.lng, loc.lat, job.title, job.company + " in " + job.location);
+            makeMarker(loc.lng, loc.lat, "<b>" + job.title + "</b>", "<b>" + job.company + " in " + job.location + "</b>. <br> " + job.desc);
         });
     }
 }
@@ -117,6 +108,7 @@ function search(){
                 company: job.company_value,
                 location: job.location_value,
                 link: job.turnstilelink_link_1,
+                desc: job.summary_description,
                 wage: job.snip_value
             };
             jobs.push(jobObj);
@@ -138,6 +130,8 @@ function search(){
 }
 
 function scrollToTop(){
+    var audio = new Audio('scroll_audio.wav');
+    audio.play();
     window.scrollTo(0, 0);
     return false;
 }

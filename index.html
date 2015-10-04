@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>Hackference Job Map</h1>
-        <p>Finding jobs near you</p>
+        <p>Finding jobs near you (definitely for changing careers)</p>
 
         <p class="view"><a href="https://github.com/SamTebbs33/Hackference">View the Project on GitHub <br><br><small>SamTebbs33/Hackference</small></a></p>
 
@@ -67,12 +67,21 @@
         <br><br>
         <ul id="job_list">
         </ul>
-        <br><input id="scroll_button" type="button" onclick="return scrollToTop()" value="Beam me up Scotty!"></input>
+        <br><input id="scroll_button" type="button" onclick="return scrollToTop()" value="Scotty, beam me up"></input>
+        <script>
+            function disableScrollButton(){
+                document.getElementById("scroll_button").style.display = 'none';
+            }
 
+            function enableScrollButton(){
+                document.getElementById("scroll_button").style.display = '';
+            }
+            disableScrollButton();
+        </script>
     </section>
 
       <footer>
-        <p><small>Hosted on GitHub Pages &mdash;</small></p>
+        <p><small>Hosted on GitHub Pages</small></p>
       </footer>
     </div>
 	<!-- Import all remote and local javascript files. main.js is the entry-point -->
