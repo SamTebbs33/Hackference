@@ -116,7 +116,7 @@ function search(){
         if(jobs.length > 0) enableScrollButton();
         else disableScrollButton();
         var text = document.getElementById("cv_link");
-        text.innerHTML = "<a href=\"http://www.indeed.com/resumes/" + job_field + "/in- " + job_location + "\">Find " + job_field + " CVs in " + job_location + "</a>";
+        text.innerHTML = "<a href=\"http://www.indeed.com/resumes/" + job_field + "/in- " + job_location + "\" target=\"_blank\">Find " + job_field + " CVs in " + job_location + "</a>";
         printJobs();
     });
 
