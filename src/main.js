@@ -8,7 +8,7 @@ var setBaseMap;
 require(["esri/map", "esri/geometry/Point", /*"esri/symbols/SimpleMarkerSymbol", "esri/Graphic",*/ "dojo/domReady!"], function(Map, Point/*, SimpleMarkerSymbol, Graphic*/) {
   map = new Map("map", {
     center: [-1.888082, 52.4770682],
-    zoom: 7,
+    zoom: 3,
     basemap: "streets"
   });
 
@@ -66,6 +66,7 @@ function printJobs(){
 }
 
 function search(){
+    map.setZoom(7);
     document.getElementById("job_list").innerHTML = "";
     jobs = [];
     var form = document.job_search;
